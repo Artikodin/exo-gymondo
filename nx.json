@@ -29,6 +29,9 @@
     "workout-list-e2e": {
       "tags": [],
       "implicitDependencies": ["workout-list"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
