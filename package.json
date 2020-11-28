@@ -29,6 +29,7 @@
   "dependencies": {
     "document-register-element": "1.13.1",
     "express": "4.17.1",
+    "mongodb": "^3.6.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-is": "17.0.1",
