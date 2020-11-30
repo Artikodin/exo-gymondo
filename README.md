@@ -1,90 +1,84 @@
 # ExoGymondo
 
-This project was generated using [Nx](https://nx.dev).
+This project is a technical front end test for the company [gymondo](https://www.gymondo.com/en/). It's a web app connected to a database displaying list of workout.
+Here is a quick resume of the acceptances criterias:
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+- List item
+- I can see a global header with an image logo
+- I can see a top bar with two filters: Start date and Category
+- I can see a list of workouts
+- I see maximum of 20 workouts per page
+- I can see other workouts using the pagination component
+- I can click on one workout and be redirected to the Workout Detail Page
+- I can see a Workout Detail Page
+- On the Workout Detail Page I can see the fields: name, description, start date and category
+- On the Workout Detail Page I can come back to the Workout List Page from the Workout Detail Page
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+## Stack
 
-## Adding capabilities to your workspace
+The differents technologies used to build this app are :
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### front
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+- ReactJs
+- React-router
+- styled-component
+- Material-ui
 
-Below are our core plugins:
+### Server
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+- Express
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+### Database
 
-## Generate an application
+- mongoDB
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+### Utils
 
-> You can use any of the plugins above to generate applications as well.
+- luxon
+- Typescript
+- nx
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+## Project tour
 
-## Generate a library
+The project has been generated with the [nx](https://nx.dev/react) framework. This framework is a monorepo devtool which allow me to quick setup my client and server side for my project.
+Here is a quick tour of the file structure:
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+`/apps/`
+folder regroupe all the differents application repos.
 
-> You can also use any of the plugins above to generate libraries as well.
+`/apps/api`
+folder contain the server side code. Server and api are located in `main.ts` and data set (database: mongoDB) are located in the `/assets/` folder. To connect to your mongodb you can modify variables located in the `/environments/environment.ts`
 
-Libraries are sharable across libraries and applications. They can be imported from `@exo-gymondo/mylib`.
+`/apps/workout-list`
+folder contain the client side application. All components are located in the `/src/app/` folder. Api call are correctly redirected to the server through a proxy `proxy.conf.json` (automatically generated file).
 
-## Development server
+`/apps/workout-list-e2e`
+folder contain e2e tests. Those test are located in the `/integration/app.spec.ts` file.
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+`/libs/`
+folder regroupe all shared librairies used in the monorepo. I use only one library `types` it allow me to share my custom type trough the project.
 
-## Code scaffolding
+## Commande
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+You can install nx globally if you you want to use following commands:
 
-## Build
+    npm  install -g nx or yarn global add nx
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+or you can prefix all the commands with:
 
-## Running unit tests
+    npm run or yarn
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+run client
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+    nx serve workout-list
 
-## Running end-to-end tests
+run server
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+    nx serve api
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+run e2e tests
 
-## Understand your workspace
+    nx e2e workout-list-e2e --watch
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+If you have any questions don't hesitate to contact me.
